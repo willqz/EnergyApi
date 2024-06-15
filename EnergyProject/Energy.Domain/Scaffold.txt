@@ -1,0 +1,3 @@
+﻿
+--Execute in Terminal OR Package Console
+dotnet ef dbcontext scaffold "Server=.\SQLEXPRESS;Database=EnergyDb;Trusted_Connection=True;TrustServerCertificate=true;" Microsoft.EntityFrameworkCore.SqlServer -o Entities --project Energy.Domain
