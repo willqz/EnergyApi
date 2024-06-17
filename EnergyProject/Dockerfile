@@ -27,6 +27,11 @@ RUN apt-get update \
     && apt-get update \
     && ACCEPT_EULA=Y apt-get install -y msodbcsql17 mssql-tools unixodbc-dev \
     && apt-get clean
+	
+# Definir o comando para executar sqlcmd
+RUN /opt/mssql-tools/bin/sqlcmd -S 192.168.15.75\\SQLEXPRESS -U sa -P '123!asd' -Q "IF NOT EXISTS (SELECT 1 FROM sys.databases WHERE name = 'EnergyDb') CREATE DATABASE EnergyDb;"
+
+RUN /opt/mssql-tools/bin/sqlcmd -S 192.168.15.75\\SQLEXPRESS -U sa -P '123!asd' -d EnergyDb -Q "IF NOT EXISTS (SELECT 1 FROM sys.tables WHERE name = 'Distributor') CREATE TABLE [dbo].[Distributor]([Id] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,[Description] [nvarchar](100) NOT NULL,  NOT NULL,[Active] [bit] NOT NULL DEFAULT (1),[DateCreate] [datetime] NOT NULL DEFAULT(getdate()));"
 
 FROM build AS publish
 RUN dotnet publish "Energy.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
