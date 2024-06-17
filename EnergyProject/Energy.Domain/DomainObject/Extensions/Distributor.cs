@@ -1,6 +1,4 @@
 ﻿using Energy.Domain.DomainObject;
-using System;
-using System.Collections.Generic;
 
 namespace Energy.Domain.Entities;
 
@@ -19,8 +17,8 @@ public partial class Distributor
 
     public void IsValid()
     {
-        Validations.ValidIsNull(Description, "A Descrição não deve ser vazia ou nula.");
-        Validations.ValidIsNull(Code, "A Sigla não deve ser vazia ou nula.");
+        Validations.ValidIsNullOrWhiteSpace(Description, "A Descrição não deve ser vazia ou nula.");
+        Validations.ValidIsNullOrWhiteSpace(Code, "A Sigla não deve ser vazia ou nula.");
 
         if (Id == 0 && Active == false)
             Validations.ValidIsFalse(Active, "Não é possivel cadastrar um registro com status desativado.");

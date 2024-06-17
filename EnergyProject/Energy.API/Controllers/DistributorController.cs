@@ -67,7 +67,7 @@ namespace Energy.API.Controllers
             {
                 Distributor distributor = new Distributor(0, request.Description, request.Code, request.Active, DateTime.Now);
                 _IAppDistributor.Add(distributor);
-                return Ok(distributor);
+                return Ok();
             }
             catch (ArgumentException ar)
             {

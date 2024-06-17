@@ -45,14 +45,15 @@ namespace Energy.API
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Energy API");
+            });
+
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
-
-                app.UseSwagger();
-                app.UseSwaggerUI(c => {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Energy API");
-                });
+                app.UseDeveloperExceptionPage();               
             }
             else
             {
