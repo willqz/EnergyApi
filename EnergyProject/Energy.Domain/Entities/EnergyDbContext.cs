@@ -17,7 +17,7 @@ public partial class EnergyDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=EnergyDb;User Id=sa;Password=123!asd;TrustServerCertificate=true;");
+        optionsBuilder.UseSqlServer("Server=192.168.15.75\\SQLEXPRESS;Database=EnergyDb;User Id=sa;Password=123!asd;TrustServerCertificate=true;");
     }
 
 

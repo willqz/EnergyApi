@@ -17,7 +17,7 @@ RUN dotnet build "Energy.API.csproj" -c Release -o /app/build
 
 # Set environment variables
 ENV ASPNETCORE_ENVIRONMENT=Production
-ENV ConnectionStrings__DefaultConnection="Server=.\\SQLEXPRESS;Database=EnergyDb;User Id=sa;Password=123!asd;TrustServerCertificate=true;"
+ENV ConnectionStrings__DefaultConnection="Server=192.168.15.75\SQLEXPRESS;Database=EnergyDb;User Id=sa;Password=123!asd;TrustServerCertificate=true;"
 
 # Install SQL Server Express prerequisites
 RUN apt-get update \
